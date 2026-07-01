@@ -4,15 +4,267 @@
     box-sizing:border-box;
 }
 
+html{
+    scroll-behavior:smooth;
+}
+
 body{
-    font-family:Arial,sans-serif;
-    padding:2rem;
+
+    font-family:'Poppins',sans-serif;
+    background:#ff079f;
+
 }
 
-nav{
-    margin-top:1rem;
+.container{
+
+    display:flex;
+    min-height:100vh;
+
 }
 
-nav a{
-    margin-right:1rem;
+/* Sidebar */
+
+.sidebar{
+
+    width:240px;
+    background:red;
+    color:white;
+    padding:30px;
+
+    position:fixed;
+    height:100vh;
+
+}
+
+.sidebar h2{
+
+    margin-bottom:40px;
+
+}
+
+.sidebar ul{
+
+    list-style:none;
+
+}
+
+.sidebar li{
+
+    margin:25px 0;
+
+}
+
+.sidebar a{
+
+    color:rgb(255, 255, 255);
+    text-decoration:none;
+    font-size:17px;
+
+}
+
+.sidebar a:hover{
+
+    color:rgba(255, 255, 255);
+
+}
+
+/* Main */
+
+main{
+
+    margin-left:240px;
+    width:100%;
+    padding:40px;
+
+}
+
+/* Header */
+
+header{
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    margin-bottom:40px;
+
+}
+
+.add-btn{
+
+    background:red;
+    color:white;
+
+    border:none;
+
+    padding:12px 22px;
+
+    border-radius:10px;
+
+    cursor:pointer;
+
+}
+
+.add-btn:hover{
+
+    background: red;
+
+}
+
+/* Cards */
+
+.cards{
+
+    display:grid;
+
+    grid-template-columns:repeat(3,1fr);
+
+    gap:25px;
+
+    margin-bottom:60px;
+
+}
+
+.card{
+
+    background:rgba(255, 255, 255);
+
+    padding:25px;
+
+    border-radius:15px;
+
+    box-shadow:0 5px 15px rgba(0,0,0,.08);
+
+}
+
+.card h3{
+
+    color:rgb(240, 22, 167);
+    margin-bottom:15px;
+
+}
+
+.card h2{
+
+    color:rgb(240, 22, 167);
+    margin-bottom:10px;
+
+}
+
+/* Sections */
+
+section{
+
+    margin-bottom:70px;
+
+}
+
+section h2{
+
+    margin-bottom:20px;
+
+}
+
+/* Search */
+
+.search{
+
+    width:300px;
+
+    padding:12px;
+
+    margin-bottom:20px;
+
+    border-radius:8px;
+
+    border:1px solid #ccc;
+
+}
+
+/* Table */
+
+table{
+
+    width:100%;
+    background:white;
+
+    border-collapse:collapse;
+
+    border-radius:15px;
+
+    overflow:hidden;
+
+}
+
+th{
+
+    background:red;
+
+    color:white;
+
+    padding:15px;
+
+}
+
+td{
+
+    padding:15px;
+
+    border-bottom:1px solid #eee;
+
+}
+
+/* Materials */
+
+select{
+
+    padding:12px;
+
+    border-radius:8px;
+
+    margin-right:15px;
+
+}
+
+.analyze-btn{
+
+    padding:12px 20px;
+
+    background:red;
+
+    color:white;
+
+    border:none;
+
+    border-radius:8px;
+
+    cursor:pointer;
+
+}
+
+.results{
+
+    background:white;
+
+    margin-top:25px;
+
+    padding:25px;
+
+    border-radius:15px;
+
+    box-shadow:0 5px 15px rgba(0,0,0,.08);
+
+}
+
+.results ul{
+
+    margin-top:15px;
+    padding-left:20px;
+
+}
+
+.results li{
+
+    margin-bottom:10px;
+
 }
