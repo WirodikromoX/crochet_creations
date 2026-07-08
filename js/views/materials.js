@@ -44,11 +44,7 @@ onkeyup="searchInventory()"
 
 </table>
 
-
-
-
 <h2>All Inventory</h2>
-
 
 <table id="allInventoryTable">
 
@@ -100,17 +96,12 @@ onkeyup="searchInventory()"
 <td>Available</td>
 </tr>
 
-
 </table>
 
 
 `;
 
 }
-
-
-
-
 
 function searchInventory(){
 
