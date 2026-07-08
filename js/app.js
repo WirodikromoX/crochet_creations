@@ -1,5 +1,4 @@
-function goToSection(id) {
-    document.getElementById(id).scrollIntoView({
-        behavior: "smooth"
-    });
-}
+import { router } from "./router.js";
+
+window.addEventListener("hashchange", router);
+window.addEventListener("load", router);
