@@ -3,63 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Crochet Creations Dashboard</title>
-
+    <title>Cuddly's Dashboard</title>
     <link rel="stylesheet" href="css/style.css">
-
-    <!-- Google Font -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
-    <!-- Font Awesome -->
-    <script src="https://kit.fontawesome.com/6f4c9a7e91.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
 
-<div class="container">
+<div id="app"></div>
 
-    <!-- Sidebar -->
-    <aside class="sidebar">
+<script src="js/data/sample-data.js"></script>
 
-        <h2>🧶 Crochet</h2>
+<script src="js/views/dashboard.js"></script>
+<script src="js/views/orders.js"></script>
+<script src="js/views/products.js"></script>
+<script src="js/views/materials.js"></script>
 
-        <ul>
-            <li><a href="#dashboard">Dashboard</a></li>
-            <li><a href="#orders">Orders</a></li>
-            <li><a href="#customers">Customers</a></li>
-            <li><a href="#materials">Material Analysis</a></li>
-        </ul>
-
-    </aside>
-
-    <!-- Main Content -->
-    <main>
-
-        <!-- Header -->
-        <header>
-
-            <div>
-                <h1>Good Afternoon 👋</h1>
-                <p>Welcome back to Crochet Creations</p>
-            </div>
-
-            <button class="add-btn">
-                + New Order
-            </button>
-
-        </header>
-
-        <!-- SPA Content -->
-        <div id="app">
-            <!-- JavaScript loads Dashboard, Orders, Customers, etc. here -->
-        </div>
-
-    </main>
-
-</div>
-
-<!-- Load your SPA -->
-<script type="module" src="js/app.js"></script>
+<script src="js/router.js"></script>
+<script src="js/app.js"></script>
 
 </body>
 </html>

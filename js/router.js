@@ -1,22 +1,72 @@
-import { renderDashboard } from "./views/dashboard.js";
-import { renderOrders } from "./views/orders.js";
-import { renderCustomers } from "./views/customers.js";
+function renderApp(){
 
-const routes = {
-  dashboard: renderDashboard,
-  orders: renderOrders,
-  customers: renderCustomers
-};
+const app = document.getElementById("app");
 
-export function router() {
-  const hash = window.location.hash.replace("#", "") || "dashboard";
+app.innerHTML = `
 
-  const view = routes[hash];
+<div class="layout">
 
-  if (!view) {
-    document.getElementById("app").innerHTML = "<h2>Not Found</h2>";
-    return;
-  }
+<aside class="sidebar">
 
-  view();
+<h2>Crochet Admin</h2>
+
+<button onclick="navigate('dashboard')">
+Dashboard
+</button>
+
+<button onclick="navigate('orders')">
+Orders
+</button>
+
+<button onclick="navigate('products')">
+Products
+</button>
+
+<button onclick="navigate('inventory')">
+Inventory
+</button>
+
+</aside>
+
+
+<main id="content"></main>
+
+</div>
+
+`;
+
+navigate("dashboard");
+
+}
+
+
+
+function navigate(page){
+
+const content=document.getElementById("content");
+
+
+switch(page){
+
+case "dashboard":
+content.innerHTML=dashboardView();
+break;
+
+
+case "orders":
+content.innerHTML=ordersView();
+break;
+
+
+case "products":
+content.innerHTML=productsView();
+break;
+
+
+case "inventory":
+content.innerHTML=inventoryView();
+break;
+
+}
+
 }
