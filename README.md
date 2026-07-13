@@ -25,7 +25,6 @@ Door een dashboard te ontwikkelen dat gebruikmaakt van geschikte data structures
 Het systeem verwerkt de volgende gegevens:
 
 * Openstaande bestellingen
-* Klantgegevens
 * Productinformatie
 * Benodigde materialen per product
 * Prioriteit van een bestelling
@@ -59,7 +58,7 @@ Een Array is geschikt voor het opslaan van verzamelingen gegevens zoals bestelli
 De Array wordt gebruikt voor:
 
 * Het opslaan van alle bestellingen.
-* Het opslaan van klantgegevens.
+* Het opslaan van producten.
 * Het weergeven van gegevens in het dashboard.
 * Het sorteren van bestellingen op prioriteit.
 * Het zoeken naar een specifieke bestelling.
@@ -131,7 +130,7 @@ De applicatie bevat de volgende functionaliteiten:
 
 * Dashboard met een overzicht van belangrijke informatie.
 * Beheer van bestellingen.
-* Beheer van klanten.
+* Beheer van producten.
 * Materiaalanalyse van producten.
 * Zoeken naar een bestelling met Binary Search.
 * Sorteren van bestellingen op prioriteit met Merge Sort.
@@ -163,7 +162,7 @@ js/
     views/
         dashboard.js
         orders.js
-        customers.js
+        products.js
         materials.js
 ```
 
@@ -179,7 +178,7 @@ Voorbeelden hiervan zijn:
 
 * `renderDashboard()`
 * `renderOrders()`
-* `renderCustomers()`
+* `renderProducts()`
 * `renderMaterials()`
 * `binarySearch()`
 * `mergeSort()`
