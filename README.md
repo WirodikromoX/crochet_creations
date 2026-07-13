@@ -25,7 +25,6 @@ Door een dashboard te ontwikkelen dat gebruikmaakt van geschikte data structures
 Het systeem verwerkt de volgende gegevens:
 
 * Openstaande bestellingen
-* Klantgegevens
 * Productinformatie
 * Benodigde materialen per product
 * Prioriteit van een bestelling
