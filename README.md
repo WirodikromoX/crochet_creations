@@ -28,7 +28,7 @@ Het systeem verwerkt de volgende gegevens:
 * Productinformatie
 * Benodigde materialen per product
 * Prioriteit van een bestelling
-* Verwachte winst per bestelling
+* Totale verkoop
 
 ---
 
