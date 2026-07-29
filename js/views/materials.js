@@ -1,145 +1,93 @@
-function inventoryView(){
+// MATERIALS 
 
-return `
-
-<h1>Inventory</h1>
-
-
-<input 
-id="inventorySearch"
-class="search"
-placeholder="Search inventory..."
-onkeyup="searchInventory()"
->
-
-
-<h2>Low Inventory</h2>
-
-
-<table id="lowInventoryTable">
-
-<tr>
-<th>Material</th>
-<th>Quantity</th>
-</tr>
-
-
-<tr>
-<td>Pink Yarn</td>
-<td>2</td>
-</tr>
-
-
-<tr>
-<td>Black Yarn</td>
-<td>4</td>
-</tr>
-
-
-<tr>
-<td>Safety Eyes</td>
-<td>5</td>
-</tr>
-
-
-</table>
-
-<h2>All Inventory</h2>
-
-<table id="allInventoryTable">
-
-<tr>
-<th>Material</th>
-<th>Quantity</th>
-<th>Status</th>
-</tr>
-
-
-<tr>
-<td>Pink Yarn</td>
-<td>2</td>
-<td>Low</td>
-</tr>
-
-
-<tr>
-<td>Black Yarn</td>
-<td>4</td>
-<td>Low</td>
-</tr>
-
-
-<tr>
-<td>Safety Eyes</td>
-<td>5</td>
-<td>Low</td>
-</tr>
-
-
-<tr>
-<td>White Yarn</td>
-<td>20</td>
-<td>Available</td>
-</tr>
-
-
-<tr>
-<td>Blue Yarn</td>
-<td>15</td>
-<td>Available</td>
-</tr>
-
-
-<tr>
-<td>Crochet Hooks</td>
-<td>10</td>
-<td>Available</td>
-</tr>
-
-</table>
-
-
-`;
-
+function materialStatus(material) {
+    return material.quantity <= material.minStock
+        ? { label: "Low", cls: "badge badge-low-stock" }
+        : { label: "Available", cls: "badge badge-in-stock" };
 }
 
-function searchInventory(){
+function getMaterialTypes() {
+    return [...new Set(materials.map(m => m.type))];
+}
 
-let input = document.getElementById("inventorySearch");
+function getFilteredMaterials() {
+    const searchInput = document.getElementById("materialSearch");
+    const typeInput = document.getElementById("materialTypeFilter");
 
-let filter = input.value.toLowerCase();
+    const search = searchInput ? searchInput.value.trim().toLowerCase() : "";
+    const type = typeInput ? typeInput.value : "All";
 
+    let list = materials;
 
-let tables = [
-    document.getElementById("lowInventoryTable"),
-    document.getElementById("allInventoryTable")
-];
-
-
-
-tables.forEach(table => {
-
-let rows = table.getElementsByTagName("tr");
-
-
-for(let i = 1; i < rows.length; i++){
-
-    let text = rows[i].innerText.toLowerCase();
-
-
-    if(text.includes(filter)){
-
-        rows[i].style.display="";
-
-    }else{
-
-        rows[i].style.display="none";
-
+    if (search) {
+        list = list.filter(m => m.name.toLowerCase().includes(search));
     }
 
+    if (type !== "All") {
+        list = list.filter(m => m.type === type);
+    }
+
+    return list;
 }
 
-});
+function renderMaterialRows(list) {
+    if (!list.length) {
+        return `<tr class="empty-row"><td colspan="5">No materials found.</td></tr>`;
+    }
 
+    return list.map(material => {
+        const status = materialStatus(material);
+        return `
+        <tr class="clickable-row" onclick="openEditMaterialModal(${material.id})">
+            <td>${material.name}</td>
+            <td>${material.type}</td>
+            <td>${material.quantity}</td>
+            <td>${material.unit}</td>
+            <td><span class="${status.cls}">${status.label}</span></td>
+        </tr>`;
+    }).join("");
+}
 
+function materialsView() {
+    return `
+<div class="page-header">
+    <h1>Materials</h1>
+    <button class="action-btn" onclick="openMaterialModal()">+ Add Material</button>
+</div>
+
+<div class="table-toolbar">
+    <input
+        id="materialSearch"
+        class="search"
+        placeholder="Search materials..."
+        onkeyup="filterMaterials()">
+
+    <select id="materialTypeFilter" class="filter-select" onchange="filterMaterials()">
+        <option value="All">Type (All)</option>
+        ${getMaterialTypes().map(t => `<option value="${t}">${t}</option>`).join("")}
+    </select>
+</div>
+
+<div class="table-wrap">
+    <table>
+        <tr>
+            <th>Material</th>
+            <th>Type</th>
+            <th>Available</th>
+            <th>Unit</th>
+            <th>Status</th>
+        </tr>
+        <tbody id="materialsTableBody">
+            ${renderMaterialRows(materials)}
+        </tbody>
+    </table>
+</div>
+`;
+}
+
+function filterMaterials() {
+    const tbody = document.getElementById("materialsTableBody");
+    if (tbody) {
+        tbody.innerHTML = renderMaterialRows(getFilteredMaterials());
+    }
 }
